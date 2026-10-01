@@ -1,7 +1,7 @@
 # Système de détection de fraude bancaire — Projet ML Engineering de bout en bout
 
-> [!IMPORTANT]
-> **- Démo Live (API) :** [https://fraud-detection-api-525661061817.europe-west1.run.app/docs](https://fraud-detection-api-525661061817.europe-west1.run.app/docs)  
+<!--> [!IMPORTANT]-->
+<!--> **- Démo Live (API) :** [https://fraud-detection-api-525661061817.europe-west1.run.app/docs](https://fraud-detection-api-525661061817.europe-west1.run.app/docs) -->
 
 
 ## - Contexte métier
