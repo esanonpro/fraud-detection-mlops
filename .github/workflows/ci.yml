@@ -1,0 +1,41 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test-train-gate:
+    runs-on: ubuntu-latest
+    env:
+      PYTHONPATH: src
+      MLFLOW_TRACKING_URI: mlruns
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Installer les dépendances
+        run: pip install -r requirements.txt httpx
+
+      - name: Lint (ruff)
+        run: ruff check src tests
+
+      - name: Tests unitaires
+        run: pytest -q
+
+      - name: Entraînement sur l'échantillon
+        run: python src/training/pipeline.py --input-path data/sample/creditcard_sample.csv
+
+      - name: Gate (recall candidat >= baseline)
+        run: python src/evaluation/gate.py --candidate models/candidate_metrics.json --baseline models/baseline_metrics.json
+
+      - name: Tests API avec le modèle entraîné
+        run: pytest -q tests/test_api.py
+
+      - name: Build de l'image Docker
+        run: docker build -t fraud-detection-api .

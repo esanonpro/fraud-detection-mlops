@@ -1,7 +1,7 @@
 import pandas as pd
 from pathlib import Path
 
-from fraud_detection.config import RAW_DATA_DIR
+from config import RAW_DATA_DIR
 
 
 def load_raw_data(file_path: Path) -> pd.DataFrame:

@@ -3,7 +3,6 @@ from pydantic import BaseModel
 import joblib
 import pandas as pd
 from pathlib import Path
-import os
 
 app = FastAPI(
     title="Fraud Detection API",
