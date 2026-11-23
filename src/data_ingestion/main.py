@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from fraud_detection.data_ingestion.load_data import load_raw_data, save_raw_data
+from data_ingestion.load_data import load_raw_data, save_raw_data
 
 
 def run(file_path: str, output_name: str) -> None:
